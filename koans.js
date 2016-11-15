@@ -6,27 +6,27 @@ const __ = undefined
  */
 
 test('What will satisfy the truthy assertion?', t => {
-  t.truthy(__)
+  t.truthy('word')
 })
 
 test('What is a falsey value?', t => {
-  t.falsy(__)
+  t.falsy(0)
 })
 
 test('What is true?', t => {
-  t.true(__)
+  t.true(true)
 })
 
 test('What is false?', t => {
-  t.false(__)
+  t.false(false)
 })
 
 test('What will satisfy the t.isity assertion?', t => {
-  t.is(__, 1 + 1)
+  t.is(2, 1 + 1)
 })
 
 test('What will satisfy the int.isity assertion?', t => {
-  t.not(__, 1 + 1)
+  t.not(4, 1 + 1)
 })
 
 /**
@@ -34,25 +34,25 @@ test('What will satisfy the int.isity assertion?', t => {
  */
 
 test('What is addition?', t => {
-  t.is(28 + __, 42)
+  t.is(28 + 14, 42)
 })
 
 test('What is assignment addition?', t => {
   let result = 34
   result += 23 // Equivalent to `result = result + n`; but more concise.
 
-  t.is(__, result)
+  t.is(57, result)
 })
 
 test('What is subtraction?', t => {
-  t.is(30 - __, 21)
+  t.is(30 - 9, 21)
 })
 
 test('What is assignment subtraction?', t => {
   let result = 5
   result -= 2
 
-  t.is(__, result)
+  t.is(3, result)
 })
 
 // Assignment operators are available for multiplication and division as well.
@@ -63,7 +63,7 @@ test('What is modulus?', t => {
   let result = 10
   result %= x // Same as `result = result % x`.
 
-  t.is(__, result, 'What is the value of result?')
+  t.is(0, result, 'What is the value of result?')
 })
 
 /**
@@ -73,14 +73,14 @@ test('What is modulus?', t => {
 test('What is equality without type coercion?', t => {
   const numberLiteral = 3
 
-  t.true(__ === numberLiteral)
+  t.true(numberLiteral === 3)
 })
 
 test('What is equality with type coercion?', t => {
   const quotedNumber = '3'
 
   // eslint-disable-next-line eqeqeq
-  t.true(quotedNumber == __)
+  t.true(quotedNumber == '3')
 })
 
 /**
@@ -91,31 +91,31 @@ test('What is equality with type coercion?', t => {
 test('What is the truthyness of positive numbers?', t => {
   const oneIsTruthy = !!1
 
-  t.is(__, oneIsTruthy)
+  t.is(true, oneIsTruthy)
 })
 
 test('What is the truthyness of negative numbers?', t => {
   const negativeOneIsTruthy = !!-1
 
-  t.is(__, negativeOneIsTruthy)
+  t.is(true, negativeOneIsTruthy)
 })
 
 test('What is the truthyness of zero?', t => {
   const zeroIsTruthy = !!0
 
-  t.is(__, zeroIsTruthy)
+  t.is(false, zeroIsTruthy)
 })
 
 test('What is the truthyness of null?', t => {
   const nullIsTruthy = !!null
 
-  t.is(__, nullIsTruthy)
+  t.is(false, nullIsTruthy)
 })
 
 test('What is the truthyness of undefined?', t => {
   const undefinedIsTruthy = !!undefined
 
-  t.is(__, undefinedIsTruthy)
+  t.is(false, undefinedIsTruthy)
 })
 
 /**
@@ -126,7 +126,7 @@ test('Assigning a value to a local variable.', t => {
   let one
   one = 1 // eslint-disable-line prefer-const
 
-  t.is(__, one)
+  t.is(1, one)
 })
 
 /**
@@ -137,30 +137,30 @@ test('Are itegers and floats the same type?', t => {
   const typeOfInteger = typeof 6
   const typeOfFloat = typeof 3.14159
 
-  t.is(__, typeOfInteger === typeOfFloat)
+  t.is(true, typeOfInteger === typeOfFloat)
 })
 
 test('What is the javascript numeric type?', t => {
   const typeOfInteger = typeof 42
 
-  t.is(__, typeOfInteger)
+  t.is('number', typeOfInteger)
 })
 
 test('What is a integer number equivalent to 1.0?', t => {
-  t.is(__, 1.0)
+  t.is(1, 1.0)
 })
 
 test('What is NaN?', t => {
   const resultOfFailedOperations = 42 / 'wat'
 
-  t.is(__, isNaN(resultOfFailedOperations))
+  t.is(true, isNaN(resultOfFailedOperations))
 })
 
 test('is NaN the same as NaN??!?', t => {
   const resultOfFailedOperations = 42 / 'wat'
 
   // eslint-disable-next-line use-isnan,eqeqeq
-  t.is(__, resultOfFailedOperations == NaN, '')
+  t.is(false, resultOfFailedOperations == NaN, '')
 })
 
 /**
@@ -172,32 +172,32 @@ test('Are similar strings with different delimiters equal?', t => {
   const doubleQuotedString = "apple"
   const singleQuotedString = 'apple'
 
-  t.is(__, doubleQuotedString === singleQuotedString)
+  t.is(true, doubleQuotedString === singleQuotedString)
 })
 
 test('What is string concatenation?', t => {
   const fruit = 'apple'
   const dish = 'pie'
 
-  t.is(__, fruit + ' ' + dish)
+  t.is('apple pie', fruit + ' ' + dish)
 })
 
 test('What are character escape sequences?', t => {
   const stringWithAnEscapedCharacter = '\u0041pple'
 
-  t.is(__, stringWithAnEscapedCharacter, '')
+  t.is('Apple', stringWithAnEscapedCharacter, '')
 })
 
 test('How do you find the length of a string?', t => {
   const fruit = 'apple'
 
-  t.is(__, fruit.length)
+  t.is(5, fruit.length)
 })
 
 test('What is slicing a string?', t => {
   const fruit = 'apple pie'
 
-  t.is(__, fruit.slice(0, 5))
+  t.is('apple', fruit.slice(0, 5))
 })
 
 /**
@@ -211,7 +211,7 @@ test('What is an if statement?', t => {
     isPositive = true
   }
 
-  t.is(__, isPositive)
+  t.is(true, isPositive)
 })
 
 test('What is a for loop?', t => {
@@ -220,16 +220,16 @@ test('What is a for loop?', t => {
     counter = counter + i
   }
 
-  t.is(__, counter)
+  t.is(16, counter)
 })
 
 test('What is a ternary operator?', t => {
   const two = 2
   let fruit = two > 0 ? 'apple' : 'orange'
-  t.is(__, fruit)
+  t.is('apple', fruit)
 
   fruit = two < 0 ? 'apple' : 'orange'
-  t.is(__, fruit)
+  t.is('orange', fruit)
 })
 
 test('What is a switch statement?', t => {
@@ -243,7 +243,7 @@ test('What is a switch statement?', t => {
       break
   }
 
-  t.is(__, result)
+  t.is(2, result)
 })
 
 test('What is the default case of a switch statement?', t => {
@@ -260,13 +260,13 @@ test('What is the default case of a switch statement?', t => {
       break
   }
 
-  t.is(__, hobbit)
+  t.is('Merry', hobbit)
 })
 
 test('What is "null coalescing?"', t => {
   const result = null || 'something'
 
-  t.is(__, result)
+  t.is('something', result)
 })
 
 /**
@@ -276,26 +276,26 @@ test('What is "null coalescing?"', t => {
 test('What is indexing an array literal', t => {
   const things = ['cellar door', 42, true]
 
-  t.is(__, things[0])
-  t.is(__, things[1])
-  t.is(__, things[2])
+  t.is('cellar door', things[0])
+  t.is(42, things[1])
+  t.is(true, things[2])
 })
 
 test('What is the type of an array?', t => {
   const typeOfArray = typeof []
 
-  t.is(__, typeOfArray)
+  t.is('object', typeOfArray)
 })
 
 test('What is the length of of an array?', t => {
-  t.is(__, ['a', 'b', 'c'].length)
+  t.is(3, ['a', 'b', 'c'].length)
 })
 
 test('What is slicing an array', t => {
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   const workingWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 
-  t.deepEqual(daysOfWeek.slice(__, __), workingWeek)
+  t.deepEqual(daysOfWeek.slice(0, 5), workingWeek)
 })
 
 test('What are stack methods on arrays?', t => {
@@ -303,8 +303,8 @@ test('What are stack methods on arrays?', t => {
   stack.push('first')
   stack.push('second')
 
-  t.is(__, stack.pop())
-  t.is(__, stack.pop())
+  t.is('second', stack.pop())
+  t.is('first', stack.pop())
 })
 
 test('What are queue methods on arrays', t => {
@@ -313,8 +313,8 @@ test('What are queue methods on arrays', t => {
   queue.push('second')
   queue.unshift('third')
 
-  t.is(__, queue.shift())
-  t.is(__, queue.shift())
+  t.is('third', queue.shift())
+  t.is('first', queue.shift())
 })
 
 /**
@@ -324,7 +324,7 @@ test('What are queue methods on arrays', t => {
 test('What is the type of an object?', t => {
   const typeOfEmptyObject = typeof {}
 
-  t.is(__, typeOfEmptyObject)
+  t.is('object', typeOfEmptyObject)
 })
 
 test('What is object literal notation?', t => {
@@ -333,14 +333,14 @@ test('What is object literal notation?', t => {
     age: 102
   }
 
-  t.is(__, person.name)
-  t.is(__, person.age)
+  t.is('Amory Blaine', person.name)
+  t.is(102, person.age)
 })
 
 test('Dynamically adding properties to an object.', t => {
   const person = {}
-  person.__ = 'Amory Blaine'
-  person.__ = 102
+  person.name = 'Amory Blaine'
+  person.age = 102
   t.is('Amory Blaine', person.name)
   t.is(102, person.age)
 })
@@ -348,6 +348,6 @@ test('Dynamically adding properties to an object.', t => {
 test('Accessing object properties with strings.', t => {
   const person = { name: 'Amory Blaine', age: 102 }
 
-  t.is(person['__'], 'Amory Blaine')
-  t.is(person['__'], 102)
+  t.is(person['name'], 'Amory Blaine')
+  t.is(person['age'], 102)
 })
