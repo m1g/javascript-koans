@@ -6,11 +6,11 @@ const __ = undefined
  */
 
 test('What will satisfy the truthy assertion?', t => {
-  t.truthy('word')
+  t.truthy('name')
 })
 
 test('What is a falsey value?', t => {
-  t.falsy(0)
+  t.falsy(null)
 })
 
 test('What is true?', t => {
@@ -356,22 +356,11 @@ test('Accessing object properties with strings.', t => {
  * Regular Expressions
  */
 
-// test('What is executing a regular expression', (t) => {
-//   const numberFinder = /(\d).*(\d)/
-//   const results = numberFinder.exec('what if 6 turned out to be 9?')
-//   t.is(results, [__, __, __])
-// })
-
 test('Does the string provided contain "select"?', (t) => {
   const containsSelect = /select/.test('  select * from users ')
   t.is(true, containsSelect)
 })
 
-// test('What is the value of matches?', (t) => {
-//   const matches = 'what if 6 turned out to be 9?'.match(/(\d)/g)
-//   t.true(matches.equalTo([__, __]), '')
-// })
-//
 test('What is the value of pie?', (t) => {
   let pie = 'apple pie'.replace('apple', 'strawberry')
   t.is('strawberry pie', pie)
@@ -394,35 +383,35 @@ test('Use filter to return array items that meet a criteria', (t) => {
   })
 
   t.is(3, numbers.length)
-  // t.is(2, odd)
+  t.deepEqual([1, 3], odd)
   t.is(2, odd.length)
 })
 
-// test('Use map to transform each element', (t) => {
-//   const numbers = [1, 2, 3]
-//   const numbersPlus1 = numbers.map((x) => {
-//     return x + 1
-//   })
-//
-//   t.is(__, numbersPlus1)
-//   t.is(__, numbers)
-// })
-//
-// test('Use reduce to update the same result on each iteration', (t) => {
-//   const numbers = [1, 2, 3]
-//   const sum = numbers.reduce((memo, x) => {
-//     return memo + x
-//   }, 0)
-//
-//   t.is(__, sum)
-//   t.is(__, numbers)
-// })
+test('Use map to transform each element', (t) => {
+  const numbers = [1, 2, 3]
+  const numbersPlus1 = numbers.map((x) => {
+    return x + 1
+  })
 
-// test('Use reduce to update the same result on each iteration', (t) => {
-//   const onlyEven = [2, 4, 6]
-//   const mixedBag = [2, 4, 5, 6]
-//   const isEven = (x) => { return x % 2 === 0 }
-//
-//   t.is(__, onlyEven.any(isEven))
-//   t.is(__, mixedBag.any(isEven))
-// })
+  t.deepEqual([2, 3, 4], numbersPlus1)
+  t.deepEqual([1, 2, 3], numbers)
+})
+
+test('Use reduce to update the same result on each iteration', (t) => {
+  const numbers = [1, 2, 3]
+  const sum = numbers.reduce((memo, x) => {
+    return memo + x
+  }, 0)
+
+  t.is(6, sum)
+  t.deepEqual([1, 2, 3], numbers)
+})
+
+test('Use some and every to determine if a function applied to any or all items is true', (t) => {
+  const onlyEven = [2, 4, 6]
+  const mixedBag = [2, 4, 5, 6]
+  const isEven = x => x % 2 === 0
+
+  t.is(true, onlyEven.every(isEven))
+  t.is(true, mixedBag.some(isEven))
+})
