@@ -1,5 +1,7 @@
 # JavaScript Koans
 
+![image of a sample koan](http://i.imgur.com/lTyWY7N.png)
+
 **ko·an**
 /ˈkōän/
 _noun_
