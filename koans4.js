@@ -10,7 +10,7 @@ test('What will satisfy the truthy assertion?', t => {
 })
 
 test('What is a falsey value?', t => {
-  t.falsy(undefined)
+  t.falsy(null)
 })
 
 test('What is true?', t => {
@@ -80,7 +80,7 @@ test('What is equality with type coercion?', t => {
   const quotedNumber = '3'
 
   // eslint-disable-next-line eqeqeq
-  t.true(quotedNumber == '3')
+  t.true(quotedNumber == 3)
 })
 
 /**
@@ -133,7 +133,7 @@ test('Assigning a value to a local variable.', t => {
  * Numbers
  */
 
-test('Are integers and floats the same type?', t => {
+test('Are itegers and floats the same type?', t => {
   const typeOfInteger = typeof 6
   const typeOfFloat = typeof 3.14159
 
