@@ -10,7 +10,7 @@ test('What will satisfy the truthy assertion?', t => {
 })
 
 test('What is a falsey value?', t => {
-  t.falsy(0)
+  t.falsy(null)
 })
 
 test('What is true?', t => {
@@ -26,7 +26,7 @@ test('What will satisfy the t.isity assertion?', t => {
 })
 
 test('What will satisfy the int.isity assertion?', t => {
-  t.not(6, 1 + 1)
+  t.not(4, 1 + 1)
 })
 
 /**
@@ -341,7 +341,6 @@ test('Dynamically adding properties to an object.', t => {
   const person = {}
   person.name = 'Amory Blaine'
   person.age = 102
-
   t.is('Amory Blaine', person.name)
   t.is(102, person.age)
 })
